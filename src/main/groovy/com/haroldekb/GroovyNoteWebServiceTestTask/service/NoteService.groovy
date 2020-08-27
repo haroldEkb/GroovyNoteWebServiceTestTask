@@ -9,4 +9,8 @@ interface NoteService {
     void save(Note note)
 
     List<Note> searchContaining(String search)
+
+    boolean doExistById(Integer integer)
+
+    void deleteNoteById(Integer integer)
 }

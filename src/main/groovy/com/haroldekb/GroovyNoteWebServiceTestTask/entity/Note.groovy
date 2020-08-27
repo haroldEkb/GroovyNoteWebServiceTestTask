@@ -11,7 +11,7 @@ import javax.persistence.Table
 
 @Canonical
 @Entity
-@Table(name = "notes")
+@Table(name = 'notes')
 class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,4 +22,13 @@ class Note {
 
     @Column(name = 'content')
     String content
+
+    /**
+        Return false if either name or content is null
+        or both name and content are empty strings
+     **/
+
+    boolean asBoolean(){
+        (name!=null && content!=null) && (name != '' || content != '')
+    }
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>NoteWebService</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+
+    <h1>Add new note</h1>
+
+    <br>
+
+    <form th:action="@{/add}" method="post" th:object="${note}">
+        <input th:field="*{name}" id="name-input" type="text" class="form-control" placeholder="Enter note name" ><br>
+        <input th:field="*{content}" id="content-input" type="text" class="form-control" placeholder="Note content" ><br>
+        <button type="submit" class="btn btn-success">Add note</button>
+    </form>
+
+    <a th:href="@{/}">To note list</a>
+</div>
+</body>
+</html>

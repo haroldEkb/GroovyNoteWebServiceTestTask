@@ -29,4 +29,14 @@ class NoteServiceImpl implements NoteService {
     List<Note> searchContaining(String search) {
         repository.findByNameContainingIgnoreCaseOrContentContainingIgnoreCase(search, search)
     }
+
+    @Override
+    void deleteNoteById(Integer id) {
+        repository.deleteById(id)
+    }
+
+    @Override
+    boolean doExistById(Integer id) {
+        return repository.existsById(id)
+    }
 }
