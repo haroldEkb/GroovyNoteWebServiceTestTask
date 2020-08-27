@@ -7,4 +7,6 @@ interface NoteService {
     List<Note> getAll()
 
     void save(Note note)
+
+    List<Note> searchContaining(String search)
 }

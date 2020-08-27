@@ -24,4 +24,9 @@ class NoteServiceImpl implements NoteService {
     void save(Note note) {
         repository.save(note)
     }
+
+    @Override
+    List<Note> searchContaining(String search) {
+        repository.findByNameContainingIgnoreCaseOrContentContainingIgnoreCase(search, search)
+    }
 }

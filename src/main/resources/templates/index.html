@@ -15,6 +15,23 @@
 
     <h1>Note List</h1>
 
+    <h3 th:if="${message != null}" th:text="${message}"></h3>
+
+    <div class="row">
+        <div class="col">
+            <a th:href="@{/add}" class="btn btn-primary" role="button">New note</a>
+        </div>
+        <div class="col">
+            <form th:action="@{/}" method="get">
+            <span style="form-control">
+                <input type="search" id="mySearch" name="search" placeholder="Search">
+                <button>Search</button>
+            </span>
+            </form>
+        </div>
+    </div>
+    <br>
+
     <table class="table">
         <thead class="thead-dark">
         <tr>

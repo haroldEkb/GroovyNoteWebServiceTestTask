@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface NoteRepository extends JpaRepository<Note, Integer> {
+    List<Note> findByNameContainingIgnoreCaseOrContentContainingIgnoreCase(String s1, String s2)
 }

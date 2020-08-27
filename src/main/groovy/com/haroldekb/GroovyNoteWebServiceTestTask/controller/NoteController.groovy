@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.ModelAttribute
+import org.springframework.web.bind.annotation.RequestParam
 
 import javax.annotation.PostConstruct
 
@@ -24,8 +26,15 @@ class NoteController {
     }
 
     @GetMapping("/")
-    String showAll(Model model){
-        model.addAttribute("notes", service.getAll())
+    String showNotes(@RequestParam(required = false, value = "search") String search, Model model, @ModelAttribute("message") String message){
+        def notes
+        if (search != null && search != "") {
+            notes = service.searchContaining(search)
+        } else {
+            notes = service.getAll()
+        }
+        model.addAttribute("notes", notes)
+        if (message != null) model.addAttribute("message", message)
         "index"
     }
 }
