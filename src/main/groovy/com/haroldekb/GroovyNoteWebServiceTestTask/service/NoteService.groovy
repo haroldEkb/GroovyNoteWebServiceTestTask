@@ -10,7 +10,7 @@ interface NoteService {
 
     List<Note> searchContaining(String search)
 
-    boolean doExistById(Integer integer)
+    boolean existsById(Integer integer)
 
     void deleteNoteById(Integer integer)
 }

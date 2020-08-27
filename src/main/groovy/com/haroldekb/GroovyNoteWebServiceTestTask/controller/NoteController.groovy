@@ -24,22 +24,16 @@ class NoteController {
         this.service = service
     }
 
-    @PostConstruct
-    void init(){
-        service.save(new Note(1, '123', '123213'))
-        service.save(new Note(2, '223', '223223'))
-    }
-
     @GetMapping('/')
     String showNotes(@RequestParam(required = false, value = 'search') String search, Model model, @ModelAttribute('message') String message){
         def notes
-        if (search != null && search != '') {
+        if (search) {
             notes = service.searchContaining(search)
         } else {
             notes = service.getAll()
         }
         model.addAttribute('notes', notes)
-        if (message != null) model.addAttribute('message', message)
+        if (message) model.addAttribute('message', message)
         'index'
     }
 
@@ -61,7 +55,7 @@ class NoteController {
 
     @GetMapping("/delete")
     String deleteNote(@RequestParam('id')  Integer id, RedirectAttributes attributes){
-        if (!service.doExistById(id)){
+        if (!service.existsById(id)){
             throw new NoSuchElementException("There is no note with id = ${id}")
         }
         service.deleteNoteById(id)

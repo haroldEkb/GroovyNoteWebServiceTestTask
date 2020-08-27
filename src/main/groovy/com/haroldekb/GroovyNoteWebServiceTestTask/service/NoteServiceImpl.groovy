@@ -36,7 +36,7 @@ class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    boolean doExistById(Integer id) {
+    boolean existsById(Integer id) {
         return repository.existsById(id)
     }
 }
